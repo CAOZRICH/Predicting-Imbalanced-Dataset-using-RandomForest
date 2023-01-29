@@ -33,4 +33,13 @@ We are going to see how big the imbalance is in the "is_fraud" class of the data
   <img src="https://user-images.githubusercontent.com/34092193/215362440-8d0106d8-5e20-439e-a4d0-d5e8bc89cc79.png"/>
 </p>
 
+## Reduction of dataset size
+
+In most datasets, there can be data that does not relate to the class to be predicted, so we have the option of reducing the size of the dataset to obtain some improvement in the processing time and use of machine learning algorithms.The following image shows the correlation between the variables in the dataset:
+
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/34092193/215363492-3af4f911-c8e5-4865-9dea-c43441d9676f.png"/>
+</p>
+
+
 
