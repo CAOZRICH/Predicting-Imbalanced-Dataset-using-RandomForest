@@ -1,4 +1,4 @@
-# Predicting Imbalanced Data using Random Forest
+# Predicting an Imbalanced Dataset using Random Forest
 * Author: Richard_Libreros
 
 ## Software Environment
