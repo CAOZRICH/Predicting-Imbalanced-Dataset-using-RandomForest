@@ -61,7 +61,7 @@ We can see that the random forest with this dataset performed very well, achievi
 
 In this case, there is no difference between the two as we saw in the graphical representation of correlations, only one variable had correlation with the class to predict, so it was right to apply a method of reducing the size of the dataset.
 
-**References
+** References
 
 - [1] Credit Card Transactions Fraud Detection Dataset https://www.kaggle.com/datasets/kartik2112/fraud-detection
 - [2] Sparkov_Data_Generation https://github.com/namebrandon/Sparkov_Data_Generation
