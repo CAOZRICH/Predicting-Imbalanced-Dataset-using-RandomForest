@@ -55,7 +55,7 @@ We can see that the random forest with this dataset performed very well, achievi
 
 ### F1 score
 
-|Reduced Dataset|full dataset|
+|Reduced Dataset|Full dataset|
 |----|----|
 |1.0|1.0|
 
