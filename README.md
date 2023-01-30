@@ -41,5 +41,18 @@ In most datasets, there can be data that does not relate to the class to be pred
   <img src="https://user-images.githubusercontent.com/34092193/215363492-3af4f911-c8e5-4865-9dea-c43441d9676f.png"/>
 </p>
 
+As we can see, there is only one variable correlated with the independent class, which is the 'atm' column, so in this case, we can dispense with the others. In the same way, a comparison of the results obtained between the entire dataset and the reduced dataset will be made at the end.
+
+## Results
+
+After applying preprocessing to optimize the results obtainable through the use of the random forest algorithm, we will analyze the results using the confusion matrix metric.
+
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/34092193/215363976-4bc9d4dd-0682-4bd4-b119-c673c777a825.png"/>
+</p>
+
+
+
+
 
 
