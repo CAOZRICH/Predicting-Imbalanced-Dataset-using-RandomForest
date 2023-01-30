@@ -53,7 +53,7 @@ After applying preprocessing to optimize the results obtainable through the use 
 
 We can see that the random forest with this dataset performed very well, achieving 0 prediction errors, this indicates how well this algorithm can perform with this type of problem, other algorithms that are quite good with imbalanced datasets are Decision Tree, Adaboost, and Gradient Boosting. Now let's compare the results obtained from the reduced dataset with the full dataset.
 
-###F1 score
+### F1 score
 
 |Reduced Dataset|full dataset|
 |----|----|
