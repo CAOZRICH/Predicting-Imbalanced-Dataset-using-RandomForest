@@ -24,7 +24,7 @@ This <a href="https://www.kaggle.com/datasets/kartik2112/fraud-detection">[1]</a
   <img src="https://user-images.githubusercontent.com/34092193/215361096-4dd41353-288d-4bde-8671-0577eedb4aa9.png"/>
 </p>
 
-## Visualization of the imbalance
+## Imbalance Visualization 
 
 We are going to see how big the imbalance is in the "is_fraud" class of the dataset (There can also be imbalances in dependent variables and can be corrected using some scaling technique).
 
