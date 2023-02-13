@@ -69,6 +69,9 @@ class creditCardFraudDetector():
         return X_train, X_test, y_train  , y_test   
     
     def trainAlgorithm(self, X_train_prep , X_test_prep, y_train, y_test):
+        X_train_prep = X_train_prep.drop(columns=['is_fraud'])
+        X_test_prep = X_test_prep.drop(columns=['is_fraud'])
+        
         clf_tree = DecisionTreeClassifier(random_state=42)
         clf_tree.fit(X_train_prep, y_train)
         
@@ -76,7 +79,7 @@ class creditCardFraudDetector():
         y_predps =  pd.Series(y_pred) 
         print(y_predps.value_counts())
         print("F1 Score:", f1_score(y_pred, y_test))
-        cm = confusion_matrix(y_test, y_test)
+        cm = confusion_matrix(y_pred, y_test)
         ax= plt.subplot()
         sns.heatmap(cm, annot=True, fmt='g', ax=ax);  
 
