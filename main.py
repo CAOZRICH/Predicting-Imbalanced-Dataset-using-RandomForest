@@ -1,4 +1,4 @@
-#credit-card-fraud-detection-by#caozrich
+#credit-card-fraud-detection-by#Richard libreros
 
 import pandas as pd
 import numpy as np
