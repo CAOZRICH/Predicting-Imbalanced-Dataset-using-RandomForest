@@ -17,8 +17,9 @@ class creditCardFraudDetector():
         self.df     = odf.copy()
         self.y      = y  #independent variable name from the dataset
         self.reduce = reduce
-        self.preprocessing(df,y,reduce)
-
+        X_train_prep, X_test_prep,y_train,y_test = self.preprocessing(df,y,reduce)
+        self.trainAlgorithm(X_train_prep, X_test_prep,y_train,y_test)
+        
     def preprocessing(self,df,y,reduce):
         if reduce == True:
            df = self.reduceDatasetlenthg(df,y) #find the most correlated columns to reduce the length of the data frame 
@@ -26,7 +27,8 @@ class creditCardFraudDetector():
         X_train, X_test, y_train, y_test = train_test_split(df, df[y],shuffle=True, test_size=0.33, random_state=42, stratify=df[y])
         X_train, X_test,y_train,y_test = self.transformCatTonum(X_train, X_test,y_train,y_test) #transfrom categorical data to numeric        
         X_train_prep,X_test_prep         = self.fillNanValue(X_train, X_test,y_train,y_test) 
-        self.trainAlgorithm(X_train_prep, X_test_prep,y_train,y_test)
+        return X_train_prep, X_test_prep,y_train,y_test 
+
         
     def reduceDatasetlenthg(self,df,y): 
         threshold = 0.2 #correlation level for filtering
