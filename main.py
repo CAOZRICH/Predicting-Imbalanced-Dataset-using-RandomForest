@@ -1,4 +1,4 @@
-#credit-card-fraud-detection-by#Richard libreros
+#credit-card-fraud-detection-by#caozrich
 
 import pandas as pd
 import numpy as np
@@ -7,9 +7,9 @@ import seaborn as sns
 from help_functions import is_cat
 from sklearn.metrics import f1_score,confusion_matrix
 from sklearn.impute import SimpleImputer
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble  import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-
+from sklearn.preprocessing import StandardScaler,PowerTransformer
     
 class creditCardFraudDetector():
     
@@ -17,18 +17,25 @@ class creditCardFraudDetector():
         self.df     = odf.copy()
         self.y      = y  #independent variable name from the dataset
         self.reduce = reduce
-        X_train_prep, X_test_prep,y_train,y_test = self.preprocessing(df,y,reduce)
-        self.trainAlgorithm(X_train_prep, X_test_prep,y_train,y_test)
-        
+        self.preprocessing(df,y,reduce)
+
     def preprocessing(self,df,y,reduce):
         if reduce == True:
-           df = self.reduceDatasetlenthg(df,y) #find the most correlated columns to reduce the length of the data frame 
-        df = self.deleteinvalidData(df)  #checks the data set for null values or inf/-inf values and deletes them     
-        X_train, X_test, y_train, y_test = train_test_split(df, df[y],shuffle=True, test_size=0.33, random_state=42, stratify=df[y])
-        X_train, X_test,y_train,y_test = self.transformCatTonum(X_train, X_test,y_train,y_test) #transfrom categorical data to numeric        
-        X_train_prep,X_test_prep         = self.fillNanValue(X_train, X_test,y_train,y_test) 
-        return X_train_prep, X_test_prep,y_train,y_test 
+           df = self.reduceDatasetlenthg(df,y) #find the most correlated columns to reduce the length of the data frame  
+        df   = self.deleteinvalidData(df)  #checks the data set for null values or inf/-inf values and deletes them     
 
+        normal = df[df[y] == 0]
+        fraud  = df[df[y] == 1]
+        normalSample = normal.sample(n=492) #Creating a sample with equal proportions of normal transactions and anomaly transactions
+        sampledData = pd.concat([normalSample, fraud], axis = 0)
+        sampledData[y].value_counts()
+        df =sampledData.drop(columns=y, axis=1)
+        y  =sampledData[y]
+                
+        X_train, X_test, y_train, y_test          = train_test_split(df, y,shuffle=True, test_size=0.33, random_state=42, stratify=y)
+        X_train, X_test,y_train,y_test            = self.transformCatTonum(X_train, X_test,y_train,y_test) #transfrom categorical data to numeric        
+        X_train_prep,X_test_prep   = self.scaling(X_train, X_test,y_train,y_test) 
+        self.trainAlgorithm(X_train_prep, X_test_prep,y_train,y_test)
         
     def reduceDatasetlenthg(self,df,y): 
         threshold = 0.2 #correlation level for filtering
@@ -49,15 +56,19 @@ class creditCardFraudDetector():
             
         return df    
     
-    def fillNanValue(self, X_train, X_test, y_train, y_test):
-        imputer = SimpleImputer(strategy="median")
+    def scaling(self, X_train, X_test, y_train, y_test):
+        ss = PowerTransformer()
+
         
-        X_train_prep = imputer.fit_transform(X_train)
-        X_test_prep  = imputer.fit_transform(X_test)
+        X_train_transformed = ss.fit_transform(X_train)
+        X_test_transformed = ss.fit_transform(X_test) 
         
-        X_train_prep = pd.DataFrame(X_train_prep, columns=X_train.columns, index=y_train.index)
-        X_test_prep  = pd.DataFrame(X_test_prep, columns=X_test.columns, index=y_test.index)
-        return X_train_prep,X_test_prep
+
+    
+        X_train_transformed = pd.DataFrame(X_train_transformed, columns=X_train.columns, index=y_train.index)
+        X_test_transformed  = pd.DataFrame(X_test_transformed, columns=X_test.columns, index=y_test.index)
+        
+        return X_train_transformed,X_test_transformed
                 
         
     def transformCatTonum(self,X_train, X_test, y_train , y_test):       
@@ -71,10 +82,10 @@ class creditCardFraudDetector():
         return X_train, X_test, y_train  , y_test   
     
     def trainAlgorithm(self, X_train_prep , X_test_prep, y_train, y_test):
-        X_train_prep = X_train_prep.drop(columns=['is_fraud'])
-        X_test_prep = X_test_prep.drop(columns=['is_fraud'])
+
+
         
-        clf_tree = DecisionTreeClassifier(random_state=42)
+        clf_tree = RandomForestClassifier(random_state=42)
         clf_tree.fit(X_train_prep, y_train)
         
         y_pred  = clf_tree.predict(X_test_prep)
@@ -92,4 +103,4 @@ class creditCardFraudDetector():
                         
       
 df = pd.read_csv("fraudTrain.csv")  
-cdf = creditCardFraudDetector(df,'is_fraud',reduce = True) 
+cdf = creditCardFraudDetector(df,'is_fraud',reduce = False) 
