@@ -61,10 +61,6 @@ As we can see, there is only one variable correlated with the independent class,
 
 ## Results
 
-<p align="left">
-  <img src="https://user-images.githubusercontent.com/34092193/219877340-c4c8fb9f-c977-4dfc-8a47-9d482d509c02.png"/>
-</p>
-
 After applying preprocessing to optimize the results obtainable through the use of the random forest algorithm, we will analyze the results using the confusion matrix metric.
 
 <p align="left">
