@@ -32,6 +32,26 @@ We are going to see how big the imbalance is in the "is_fraud" class of the data
   <img src="https://user-images.githubusercontent.com/34092193/215362440-8d0106d8-5e20-439e-a4d0-d5e8bc89cc79.png"/>
 </p>
 
+## Imbalance Reducction 
+
+Now we are going to create a sample with the same proportions of normal transactions and anomaly transactions using the .sample method
+
+```python
+
+normal = df[df[y] == 0]
+fraud  = df[df[y] == 1]
+Sample = normal.sample(n=7506)¿
+sampledData = pd.concat([Sample, fraud], axis = 0)
+	
+```
+
+# Results
+
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/34092193/215362440-8d0106d8-5e20-439e-a4d0-d5e8bc89cc79.png"/>
+</p>
+
+
 ## Reduction of dataset size
 
 In most datasets, there can be data that does not relate to the class to be predicted, so we have the option of reducing the size of the dataset to obtain some improvement in the time of preprocessing and the use of machine learning algorithms. The following image shows the correlation between the variables in the dataset:
@@ -43,6 +63,10 @@ In most datasets, there can be data that does not relate to the class to be pred
 As we can see, there is only one variable correlated with the independent class, which is the 'atm' column, so in this case, we can dispense with the others. In the same way, a comparison of the results obtained between the entire dataset and the reduced dataset will be made at the end.
 
 ## Results
+
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/34092193/219877340-c4c8fb9f-c977-4dfc-8a47-9d482d509c02.png"/>
+</p>
 
 After applying preprocessing to optimize the results obtainable through the use of the random forest algorithm, we will analyze the results using the confusion matrix metric.
 
