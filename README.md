@@ -44,8 +44,6 @@ Sample = normal.sample(n=7506)¿
 sampledData = pd.concat([Sample, fraud], axis = 0)	
 ```
 
-# Results
-
 <p align="left">
   <img src="https://user-images.githubusercontent.com/34092193/219877340-c4c8fb9f-c977-4dfc-8a47-9d482d509c02.png"/>
 </p>
