@@ -26,8 +26,8 @@ class creditCardFraudDetector():
 
         normal = df[df[y] == 0]
         fraud  = df[df[y] == 1]
-        normalSample = normal.sample(n=492) #Creating a sample with equal proportions of normal transactions and anomaly transactions
-        sampledData = pd.concat([normalSample, fraud], axis = 0)
+        Sample = normal.sample(n=7506) #Creating a sample with equal proportions of normal transactions and anomaly transactions
+        sampledData = pd.concat([Sample, fraud], axis = 0)
         sampledData[y].value_counts()
         df =sampledData.drop(columns=y, axis=1)
         y  =sampledData[y]
