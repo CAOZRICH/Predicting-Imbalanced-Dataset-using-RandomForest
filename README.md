@@ -1,5 +1,4 @@
-# Predicting an Imbalanced Dataset using Random Forest
-* Author: Richard_Libreros
+# Methods for Dealing with an imbalanced dataset and using Random Forest for classification
 
 ## Software Environment
 * Python 
