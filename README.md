@@ -1,4 +1,4 @@
-# Dealing with an imbalanced dataset and using Random Forest for classificate it
+# Treatment of an imbalanced dataset and use of Random Forest to classify it
 
 ## Software Environment
 * Python 
