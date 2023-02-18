@@ -41,14 +41,13 @@ Now we are going to create a sample with the same proportions of normal transact
 normal = df[df[y] == 0]
 fraud  = df[df[y] == 1]
 Sample = normal.sample(n=7506)¿
-sampledData = pd.concat([Sample, fraud], axis = 0)
-	
+sampledData = pd.concat([Sample, fraud], axis = 0)	
 ```
 
 # Results
 
 <p align="left">
-  <img src="https://user-images.githubusercontent.com/34092193/215362440-8d0106d8-5e20-439e-a4d0-d5e8bc89cc79.png"/>
+  <img src="https://user-images.githubusercontent.com/34092193/219877340-c4c8fb9f-c977-4dfc-8a47-9d482d509c02.png"/>
 </p>
 
 
