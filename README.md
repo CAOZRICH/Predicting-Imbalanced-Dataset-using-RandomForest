@@ -64,18 +64,24 @@ As we can see, there is only one variable correlated with the independent class,
 After applying preprocessing to optimize the results obtainable through the use of the random forest algorithm, we will analyze the results using the confusion matrix metric.
 
 <p align="left">
-  <img src="https://user-images.githubusercontent.com/34092193/215363976-4bc9d4dd-0682-4bd4-b119-c673c777a825.png"/>
+  <img src="https://user-images.githubusercontent.com/34092193/219877689-8bedf45d-d37e-41bd-a4ab-d920793d3b23.png"/>
 </p>
 
-We can see that the random forest with this dataset performed very well, achieving 0 prediction errors, this indicates how well this algorithm can perform with this type of problem, other algorithms that are quite good with imbalanced datasets are Decision Tree, Adaboost, and Gradient Boosting. Now let's compare the results obtained from the reduced dataset with the full dataset.
+We can see that the random forest with this dataset performed very well, this indicates how well this algorithm can perform with this type of problem, other algorithms that are quite good with imbalanced datasets are Decision Tree, Adaboost, and Gradient Boosting. Now let's compare the results obtained from the reduced dataset with the full dataset.
 
 ### F1 score
 
 |Reduced Dataset|Full dataset|
 |----|----|
-|1.0|1.0|
+|0.85|0.95|
 
-In this case, there is no difference between the two as we saw in the graphical representation of correlations, only one variable had correlation with the class to predict, so it was right to apply a method of reducing the size of the dataset.
+If there is a clear difference between the two results, it means that it is not successful to apply the data set reduction in this case. 
+
+### Ideas to improve accuracy
+
+* k-fold Cross-Validation implementation
+* Increase the proportion of anomalous samples
+* Testing different transformers in the preprocessing process
 
 ## References
 
